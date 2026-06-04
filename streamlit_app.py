@@ -3,8 +3,8 @@ import pickle
 import numpy as np
 
 # Load model and scaler
-ridge_model = pickle.load(open('20-Project1/Models/ridge.pkl', 'rb'))
-standard_scaler = pickle.load(open('20-Project1/Models/scaler.pkl', 'rb'))
+ridge_model = pickle.load(open('Models/ridge.pkl', 'rb'))
+standard_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
 
 st.title("Algerian Forest Fire Prediction")
 
