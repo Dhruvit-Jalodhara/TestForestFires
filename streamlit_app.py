@@ -6,35 +6,42 @@ import numpy as np
 ridge_model = pickle.load(open('Models/ridge.pkl', 'rb'))
 standard_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
 
+# st.title("Algerian Forest Fire Prediction")
+
+# st.write("Enter the required features below:")
+
+# # User Inputs
+# Temperature = st.number_input("Temperature")
+# RH = st.number_input("RH")
+# Ws = st.number_input("Ws")
+# Rain = st.number_input("Rain")
+# FFMC = st.number_input("FFMC")
+# DMC = st.number_input("DMC")
+# ISI = st.number_input("ISI")
+# Classes = st.number_input("Classes")
+# Region = st.number_input("Region")
+
 st.title("Algerian Forest Fire Prediction")
 
-st.write("Enter the required features below:")
+col1, col2 = st.columns(2)
 
-# User Inputs
-Temperature = st.number_input("Temperature")
-RH = st.number_input("RH")
-Ws = st.number_input("Ws")
-Rain = st.number_input("Rain")
-FFMC = st.number_input("FFMC")
-DMC = st.number_input("DMC")
-ISI = st.number_input("ISI")
-Classes = st.number_input("Classes")
-Region = st.number_input("Region")
+with col1:
+    Temperature = st.number_input("Temperature")
+    RH = st.number_input("Relative Humidity (RH)")
+    Ws = st.number_input("Wind Speed (Ws)")
+    Rain = st.number_input("Rain")
+
+with col2:
+    FFMC = st.number_input("FFMC")
+    DMC = st.number_input("DMC")
+    ISI = st.number_input("ISI")
+    Classes = st.number_input("Classes")
+    Region = st.number_input("Region")
 
 # Prediction Button
 if st.button("Predict"):
 
-    input_data = np.array([[
-        Temperature,
-        RH,
-        Ws,
-        Rain,
-        FFMC,
-        DMC,
-        ISI,
-        Classes,
-        Region
-    ]])
+    input_data = np.array([[ Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes, Region ]])
 
     scaled_data = standard_scaler.transform(input_data)
 
