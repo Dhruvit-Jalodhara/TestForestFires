@@ -21,22 +21,27 @@ standard_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
 # Classes = st.number_input("Classes")
 # Region = st.number_input("Region")
 
-st.title("Algerian Forest Fire Prediction")
+st.title("🔥 Algerian Forest Fire Prediction")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    Temperature = st.number_input("Temperature")
-    RH = st.number_input("Relative Humidity (RH)")
-    Ws = st.number_input("Wind Speed (Ws)")
-    Rain = st.number_input("Rain")
+    Temperature = st.number_input( "Temperature", min_value=0, step=1 )
+    RH = st.number_input( "Relative Humidity (RH)", min_value=0.0, format="%.2f")
+    Ws = st.number_input( "Wind Speed (Ws)", min_value=0.0, format="%.2f")
+    Rain = st.number_input( "Rain", min_value=0.0, format="%.2f" )
 
 with col2:
-    FFMC = st.number_input("FFMC")
-    DMC = st.number_input("DMC")
-    ISI = st.number_input("ISI")
-    Classes = st.number_input("Classes")
-    Region = st.number_input("Region")
+    FFMC = st.number_input("FFMC", format="%.2f")
+    DMC = st.number_input("DMC", format="%.2f")
+    ISI = st.number_input("ISI", format="%.2f")
+    Classes = st.number_input( "Classes", min_value=0, max_value=1 , step=1 )
+    Region = st.number_input( "Region", min_value=0, max_value=1 , step=1 )
+
+# Convert integer fields explicitly
+Temperature = int(Temperature)
+Classes = int(Classes)
+Region = int(Region)
 
 # Prediction Button
 if st.button("Predict"):
