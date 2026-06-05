@@ -21,7 +21,7 @@ standard_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
 # Classes = st.number_input("Classes")
 # Region = st.number_input("Region")
 
-st.title("🔥 Algerian Forest Fire Prediction")
+st.title("Algerian Forest Fire Prediction")
 
 col1, col2 = st.columns(2)
 
